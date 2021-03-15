@@ -1,0 +1,96 @@
+
+public class Book {
+	String strName;
+	int iCount;
+	public Book(String inName,int inCount)
+	{
+		this.strName = inName;
+		this.iCount = inCount;
+	}
+}
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class BookCar {
+    List<Book> licar;
+    public BookCar()
+    {
+    	this.licar = new ArrayList<Book>();
+    }
+    public void add(Book bk)
+    {
+    	this.licar.add(bk);
+    }
+}
+
+
+public class Cashier {
+    String strName;
+    int iCount;
+
+    public Cashier(String inName, int inCount)
+    {
+    	this.strName = inName;
+    	this.iCount = inCount;
+    }
+    public void cash(reader cs)
+    {
+    	int sum = cs.iCount;
+    	cs.borrow(sum);
+    	this.iCount += sum;
+    	System.out.println("Cashier:" + this.iCount);
+    }
+    public void print(reader cs)
+    {
+    	for(int i=0;i<cs.sc.licar.size();i++)
+    	{
+    		Book temp;
+    		temp = cs.sc.licar.get(i);
+    		System.out.println("name:" + temp.strName);
+    	}
+    }
+}
+
+
+public class reader {
+    String strName;
+    int  iCount;
+    BookCar sc;
+    public reader(String inName,int inCount)
+    {
+    	this.strName = inName;
+    	this.iCount = inCount;
+    	this.sc = new BookCar();
+    }
+    public void add(Book bk)
+    {
+    	this.sc.add(bk);
+    }
+    public void borrow(int bCount)
+    {
+    	this.iCount -= bCount;
+    	System.out.println("Reader:" + this.iCount + "本");
+    }
+}
+
+
+public class Test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+        Book bk1 = new Book("book1",5);
+        Book bk2 = new Book("book2",6);
+        Book bk3 = new Book("book3",7);
+        reader cs = new reader("zhang",1);
+        Cashier csh = new Cashier("li",18);
+        cs.add(bk1);
+        cs.add(bk2);
+        cs.add(bk3);
+        csh.cash(cs);
+        csh.print(cs);
+	}
+
+}
+
+
