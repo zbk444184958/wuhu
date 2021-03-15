@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class Equation {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+        Scanner sc=new Scanner(System.in);
+        System.out.println("请输入一元二次方程的三个系数a,b,c的值");
+        double a = sc.nextDouble();
+        double b = sc.nextDouble();
+        double c = sc.nextDouble();
+        double derta=b*b-4*a*c;
+        if(derta>0)
+        {
+        	System.out.println("该方程有两个实数解");
+        	double x1 = (-b+Math.sqrt(derta)/(2*a));
+        	double x2 = (-b-Math.sqrt(derta)/(2*a));
+        	System.out.println("x1 =" +x1 +"x2 =" +x2);
+        }
+        else if(derta==0)
+        {
+        	System.out.println("该方程有一个实数解");
+        	double x3 = -b/(2*a);
+        	System.out.println("x1 =" +x3);
+        }
+        else
+        {
+        	System.out.println("该方程有虚数解");
+        	double shibu = -b/(2*a);
+        	double xubu = Math.sqrt(-derta)/(2*a);
+        	System.out.println("x1 =" +shibu + "+" + xubu +"i");
+        	System.out.println("x2 =" +shibu + "-" + xubu +"i");
+        }
+	}
+
+}
